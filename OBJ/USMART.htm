@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\USMART.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\USMART.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 24]: Last Updated: Tue Dec 12 18:33:41 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue Dec 12 20:58:34 2017
 <BR><P>
 <H3>Maximum Stack Usage =       1512 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -3149,7 +3149,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[4c]"></a>USART2_IRQHandler</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, uart.o(.text))
+<P><STRONG><a name="[4c]"></a>USART2_IRQHandler</STRONG> (Thumb, 112 bytes, Stack size 16 bytes, uart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = USART2_IRQHandler &rArr; Read_Uart &rArr; USARTx_Rx_Read_NOTFIFO &rArr; USARTx_Rx_GetFIFO_Status
 </UL>
 <BR>[Calls]<UL><LI><a href="#[199]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
@@ -3448,7 +3448,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Transmit
 </UL>
 
-<P><STRONG><a name="[1b3]"></a>Ymodem_Transmit</STRONG> (Thumb, 624 bytes, Stack size 1352 bytes, ymodem.o(.text))
+<P><STRONG><a name="[1b3]"></a>Ymodem_Transmit</STRONG> (Thumb, 626 bytes, Stack size 1352 bytes, ymodem.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1488<LI>Call Chain = Ymodem_Transmit &rArr; Receive_Byte &rArr; SerialKeyPressed &rArr; ReadUart &rArr; USARTx_Rx_Read_FIFO &rArr; USARTx_Rx_Get_FIFO_Status
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_SendPacket
@@ -3980,7 +3980,7 @@ Global Symbols
 <LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;log
 </UL>
 
-<P><STRONG><a name="[1df]"></a>log</STRONG> (Thumb, 822 bytes, Stack size 640 bytes, log.o(i.log), UNUSED)
+<P><STRONG><a name="[1df]"></a>log</STRONG> (Thumb, 822 bytes, Stack size 96 bytes, log.o(i.log), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -4013,7 +4013,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[18a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USARTx_Rx_Init_FIFO
 </UL>
 
-<P><STRONG><a name="[f1]"></a>pow</STRONG> (Thumb, 2510 bytes, Stack size 1840 bytes, pow.o(i.pow), UNUSED)
+<P><STRONG><a name="[f1]"></a>pow</STRONG> (Thumb, 2510 bytes, Stack size 112 bytes, pow.o(i.pow), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_drsub
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -4031,7 +4031,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RMS_percent
 </UL>
 
-<P><STRONG><a name="[f4]"></a>sqrt</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, sqrt.o(i.sqrt), UNUSED)
+<P><STRONG><a name="[f4]"></a>sqrt</STRONG> (Thumb, 76 bytes, Stack size 24 bytes, sqrt.o(i.sqrt), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>

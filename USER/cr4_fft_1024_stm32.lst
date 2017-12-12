@@ -2422,11 +2422,11 @@ xbe73,0x0192
 xbf38,0x00c9
   630 000011E0         
   631 000011E0                 END
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=..\OBJ\c
-r4_fft_1024_stm32.d -o..\OBJ\cr4_fft_1024_stm32.o -ID:\ARM\Keil\ARM\RV31\INC -I
-D:\ARM\Keil\ARM\CMSIS\Include -ID:\ARM\Keil\ARM\Inc\ST\STM32F10x --predefine="_
-_MICROLIB SETA 1" --list=.\cr4_fft_1024_stm32.lst ..\STM32F10x_DSP_Lib\src\asm\
-arm\cr4_fft_1024_stm32.s
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=..\obj\c
+r4_fft_1024_stm32.d -o..\obj\cr4_fft_1024_stm32.o -IE:\Keil\ARM\RV31\INC -IE:\K
+eil\ARM\CMSIS\Include -IE:\Keil\ARM\Inc\ST\STM32F10x --predefine="__MICROLIB SE
+TA 1" --list=.\cr4_fft_1024_stm32.lst ..\STM32F10x_DSP_Lib\src\asm\arm\cr4_fft_
+1024_stm32.s
 
 
 
@@ -2502,13 +2502,13 @@ Symbol: NPT
    Definitions
       At line 46 in file ..\STM32F10x_DSP_Lib\src\asm\arm\cr4_fft_1024_stm32.s
    Uses
-      At line 136 in macro ÿÿ5OPT
+      At line 136 in macro ÿÿ“OPT
       at line 228 in file ..\STM32F10x_DSP_Lib\src\asm\arm\cr4_fft_1024_stm32.s
-      At line 139 in macro ÿÿ5OPT
+      At line 139 in macro ÿÿ“OPT
       at line 228 in file ..\STM32F10x_DSP_Lib\src\asm\arm\cr4_fft_1024_stm32.s
-      At line 142 in macro ÿÿ5OPT
+      At line 142 in macro ÿÿ“OPT
       at line 228 in file ..\STM32F10x_DSP_Lib\src\asm\arm\cr4_fft_1024_stm32.s
-      At line 145 in macro ÿÿ5OPT
+      At line 145 in macro ÿÿ“OPT
       at line 228 in file ..\STM32F10x_DSP_Lib\src\asm\arm\cr4_fft_1024_stm32.s
 
 1 symbol

@@ -1,63 +1,17 @@
 #include "led.h"
-#include "delay.h"
 #include "sys.h"
 #include "stdio.h"
-//ALIENTEK战舰STM32开发板实验1
-//跑马灯实验  
-//技术支持：www.openedv.com
-//广州市星翼电子科技有限公司
+#include "appInterface.h"
 
+//上层应用  调用底层接口完成上层应用功能	（预留指定接口给底层回调）
 
-u8 app[32];
-
-//pFunction0 IAP_W25QXX_Init = 0;
-
-void Delay_us(u32 val)
-{
-	int i = 0,j = 0;
-
-	for(i = 0; i < val ; i++)
-	{
-		for(j = 0;j < 36;j++)
-		{
-			;
-		}
-	}
-}
-void Delay_ms(u16 nms)
-{
-	Delay_us(nms*1000);
-}
-
-typedef  u32 (*Interface)();
-typedef  void (*iap_Set_Voutp)(float voltage);
-//typedef void iap_Set_Voutp(float voltage)
-
-#define 		INTERFACEADDR				0x20000550
-
-Interface IAP_W25QXX_Init = NULL;
-iap_Set_Voutp Set_Voutp = NULL;
-
-u32 *addr_interface = (u32*)0x20000550;
-
-void load_interface(void)
-{
-	addr_interface = (u32*)0x20000550;
-	
-	printf("\r\nInterface_addr=0x%x   0x%x \r\n",(u32)addr_interface,(u32)(*addr_interface));
-	IAP_W25QXX_Init = (u32(*)())(((u32*)(*addr_interface))[2]);
-	Set_Voutp = (iap_Set_Voutp)(((u32*)(*addr_interface))[15]);
-	Set_Voutp(4.45);
-	IAP_W25QXX_Init("\r\n############Interface OK$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
-}
 
 void led_flash(void)
 {
 	u8 i=5;
 	LED_Init();		  	//初始化与LED连接的硬件接口
 	load_interface();
-	
-	
+
 	while(i--)
 	{
 		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
@@ -68,20 +22,10 @@ void led_flash(void)
 	}
 }
 
-
-
-
-
-
-//0x2000C000
 int main(void)
 {
-	u8 i=5;
-	//delay_init();	    	 //延时函数初始化	  
+	u8 i=5; 
 	LED_Init();		  	//初始化与LED连接的硬件接口
-	
-
-	app[0] = (u32)led_flash;
 	
 	while(i--)
 	{
@@ -96,12 +40,9 @@ int main(void)
 }
 
 
-
-
 void APPmain(void)
 {	
-	u8 i=3;
-	delay_init();	    	 //延时函数初始化	  
+	u8 i=3;  
 	LED_Init();		  	//初始化与LED连接的硬件接口
 	while(i--)
 	{

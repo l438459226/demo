@@ -25,6 +25,7 @@
 
 
 u32 *interface[]={
+
 	(void*)delay_ms,
 	(void*)delay_us,
 	(void*)printf,
@@ -42,6 +43,7 @@ u32 *interface[]={
 	(void*)IIC_Wait_Ack,
 	(void*)IIC_Ack,
 	(void*)IIC_NAck,
+	
 	(void*)Set_Voutp,
 	(void*)Set_Voutn,
 	(void*)Voutp_Upfirst,
