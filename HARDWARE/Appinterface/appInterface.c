@@ -21,27 +21,10 @@
 #include "VoltCurrentProc.h"
 
 #include "common.h"
-
-extern void simple_va_fun(int i,...);
-
-
-//typedef  u32 (*Interface)();
+#include "appInterface.h"
 
 
-
-
-
-
-struct function{
-   void *func;
-};
-
-
-#define 		INTERFACEADDR				0x20000550
-struct function *Interface_addr  __attribute__((at(INTERFACEADDR))) = NULL;
-
-
- void *interface[]={
+u32 *interface[]={
 	(void*)delay_ms,
 	(void*)delay_us,
 	(void*)printf,
@@ -66,20 +49,6 @@ struct function *Interface_addr  __attribute__((at(INTERFACEADDR))) = NULL;
 	(void*)&lcm_para,	   //µ×²ã²ÎÊý
 	0,
 };
-
-
-const struct function interfacee={
-	 	delay_ms
-
- };
-
-/*
-const u32 od=(u32)delay_ms;
-*/
-
-//const void * pg = IIC_Start;
-
-
 
 
 

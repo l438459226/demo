@@ -20,7 +20,7 @@
 #include "AD715.h"
 #include "Uart.h"
 #include "VoltCurrentProc.h"
-
+#include "appInterface.h"
 #include "common.h"
 
 u8 bufer[512];
@@ -177,12 +177,20 @@ const u32 *p;
 Interface IAP_W25QXX_Init = (u32(*)())(IIC_Start);
 
 
+u32 *Interface_addr = (u32*)0x20000550;
 
+void load_interface(void)
+{
+	*Interface_addr = (u32)interface;
+
+	printf("\r\nInterface_addr=0x%x   0x%x  0x%x\r\n",(u32)&Interface_addr,(u32)(Interface_addr),(u32)interface);
+	IAP_W25QXX_Init = (u32(*)())(Interface_addr[2]);
+}
 
 int main(void)
 { 
-	u32 len=0x5674574,t;
-	u32 *p=(u32 *)simple_va_fun;
+	u32 len=0x5674574;
+//	u32 *p=(u32 *)simple_va_fun;
   NVIC_Configuration();
 	delay_init();	    	 //延时函数初始化
 
@@ -193,10 +201,10 @@ int main(void)
 	usmart_dev.init(72); 	//初始化USMART				 	
 	mem_init(SRAMIN);
 	
-	p = &len;
-	
-	t = *p;
-	
+//	p = &len;
+
+	load_interface();
+	//while(1);
 	IIC_Init();
 	Flicker_init();//使用内存管理
 	printf("uart2 init ok!\r\n");
@@ -269,7 +277,7 @@ int main(void)
 	Delay_ms(500);
 	INA226_Volt();
 
-	//Ymode();
+	Ymode();
 	
 	
 	//iapmain = (pFunction0)(*p);
@@ -281,7 +289,8 @@ int main(void)
   while(1) 
 	{
 		//Current_Volt();
-		IAP_W25QXX_Init(0xD0,14,0x33,0x5C,0xCB,0x31,0x01,0x10,0x10,0x10,0x19,0x29,0xD0,0x33,0x5C,0xCB);
+		//IAP_W25QXX_Init(0xD0,14,0x33,0x5C,0xCB,0x31,0x01,0x10,0x10,0x10,0x19,0x29,0xD0,0x33,0x5C,0xCB);
+		//IAP_W25QXX_Init("sdofihoweoirfhoewi");
 //		printf(0xD0,14,0x33,0x5C,0xCB,0x31,0x01,0x10,0x10,0x10,0x19,0x29,0xD0,0x33,0x5C,0xCB);
 		Delay_ms(1000);
 		len = ReadUart(USART_PORT_COM2,bufer,1);

@@ -73,6 +73,8 @@ void Set_Voutp(float voltage)//3.2  - 12.75  6.75
 	u8 vplus;
 	float VOUTP;
 	
+	printf("voltage %f\r\n",voltage);
+	
 	value = (u16)((voltage-3.2)*1000);
 	vp = value/VP_BASIC;
 	
@@ -102,9 +104,10 @@ void Set_Voutn(float voltage)
 	u8 temp;
 	float VOUTN;
 	
-	//value = (voltage*1000)+1200;//0-(voltage+1.2)*1000;
-	value = (u16)(0-(voltage+1.2)*1000);
 	
+	//value = (voltage*1000)+1200;//0-(voltage+1.2)*1000;
+	value = (u16)(0-((voltage+1.2)*1000));
+	printf("voltage %f    value %d\r\n",voltage,value);
 	//printf("value:0x%x  \r\n",value);
 	vn = (value/50);
 	if(value%50)	vn +=1;
@@ -116,7 +119,7 @@ void Set_Voutn(float voltage)
 	temp = TL35825_Read(TL35825_REG1);
 	printf("REG1:0x%x\r\n",temp);
 	
-	VOUTN = (-1200) - (vn * 50);
+	VOUTN = (-1200) - ((float)vn * 50);
 	printf("VSNÊä³öµçÑ¹£º%f\r\n",(VOUTN/1000));
 }
 

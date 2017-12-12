@@ -54,3 +54,4 @@
 ..\OBJ\appinterface.o: ..\HARDWARE\Ymodem\common.h
 ..\OBJ\appinterface.o: ..\HARDWARE\Ymodem\ymodem.h
 ..\OBJ\appinterface.o: ..\STM32F10x_FWLib\inc\stm32f10x_flash.h
+..\OBJ\appinterface.o: ..\HARDWARE\Appinterface\appInterface.h

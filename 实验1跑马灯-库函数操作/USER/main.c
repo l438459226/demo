@@ -29,10 +29,35 @@ void Delay_ms(u16 nms)
 	Delay_us(nms*1000);
 }
 
+typedef  u32 (*Interface)();
+typedef  void (*iap_Set_Voutp)(float voltage);
+//typedef void iap_Set_Voutp(float voltage)
+
+#define 		INTERFACEADDR				0x20000550
+
+Interface IAP_W25QXX_Init = NULL;
+iap_Set_Voutp Set_Voutp = NULL;
+
+u32 *addr_interface = (u32*)0x20000550;
+
+void load_interface(void)
+{
+	addr_interface = (u32*)0x20000550;
+	
+	printf("\r\nInterface_addr=0x%x   0x%x \r\n",(u32)addr_interface,(u32)(*addr_interface));
+	IAP_W25QXX_Init = (u32(*)())(((u32*)(*addr_interface))[2]);
+	Set_Voutp = (iap_Set_Voutp)(((u32*)(*addr_interface))[15]);
+	Set_Voutp(4.45);
+	IAP_W25QXX_Init("\r\n############Interface OK$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
+}
+
 void led_flash(void)
 {
 	u8 i=5;
 	LED_Init();		  	//初始化与LED连接的硬件接口
+	load_interface();
+	
+	
 	while(i--)
 	{
 		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
@@ -45,26 +70,27 @@ void led_flash(void)
 
 
 
-typedef  void (*pFunction0)(void);
-u32 rw[12] __attribute__ ((section ("codeinterge"))) ={1,23,4,5,544,4323}; 
 
 
 
-
+//0x2000C000
 int main(void)
 {
 	u8 i=5;
-	delay_init();	    	 //延时函数初始化	  
+	//delay_init();	    	 //延时函数初始化	  
 	LED_Init();		  	//初始化与LED连接的硬件接口
+	
+
 	app[0] = (u32)led_flash;
+	
 	while(i--)
 	{
 		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
-		rw[i] = i;
-		delay_ms(500);
+		
+		Delay_ms(500);
 		GPIO_SetBits(GPIOB,GPIO_Pin_3);
 
-		delay_ms(500);
+		Delay_ms(500);
 	}
 	return 0;
 }
