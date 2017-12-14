@@ -597,7 +597,7 @@ void USART2_IRQHandler(void)                	//串口1中断服务程序
 			tt++;
 			//printf("uart2 USART_IT_RXNE\r\n");
    } 
-	 if(USART_GetITStatus(USART2, USART_IT_IDLE) == SET)  //接收中断		(接收到的数据必须'\r'结尾)
+	 if(USART_GetITStatus(USART2, USART_IT_IDLE) == SET)  //空闲中断
 	{
 			Clear = USART2->SR;		//READ SR Reg
 			Clear = USART2->DR;		//READ DR Reg
@@ -608,9 +608,7 @@ void USART2_IRQHandler(void)                	//串口1中断服务程序
 			
 			Read_Uart(USART_PORT_COM2,USART_RX_BUF,dlen);
 
-			
-			
-			printf("\r\nuart idle IRQ:%s,%d\r\n",USART_RX_BUF,dlen);
+			printf("\r\n UART IDLE:%s,%d\r\n",USART_RX_BUF,dlen);
 			
    } 
 	 //printf("\r\n uart2 irq\r\n");

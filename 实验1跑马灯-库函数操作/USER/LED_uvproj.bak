@@ -165,6 +165,7 @@
             <Capability>1</Capability>
             <DriverSelection>4099</DriverSelection>
           </Flash1>
+          <bUseTDR>0</bUseTDR>
           <Flash2>Segger\JL2CM3.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -296,7 +297,7 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x8000000</StartAddress>
+                <StartAddress>0x2000c000</StartAddress>
                 <Size>0x3000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
@@ -350,7 +351,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HARDWARE\LED;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE</IncludePath>
+              <IncludePath>..\HARDWARE\LED;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\Appinterface</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -422,11 +423,6 @@
           <GroupName>SYSTEM</GroupName>
           <Files>
             <File>
-              <FileName>delay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
-            </File>
-            <File>
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\sys\sys.c</FilePath>
@@ -475,6 +471,16 @@
               <FileName>misc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\STM32F10x_FWLib\src\misc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>interface</GroupName>
+          <Files>
+            <File>
+              <FileName>appInterface.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\Appinterface\appInterface.c</FilePath>
             </File>
           </Files>
         </Group>
