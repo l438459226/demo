@@ -417,7 +417,7 @@ void usmart_scan(void)
 				switch(sta)
 				{
 					case USMART_FUNCERR:
-						printf("funtion error!\r\n");   			
+						//printf("funtion error!\r\n");   			
 						break;	
 					case USMART_PARMERR:
 						printf("parmer error!\r\n");   			

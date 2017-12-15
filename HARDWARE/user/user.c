@@ -28,54 +28,6 @@
 
 
 
-int UnPack(u8 *package,u8 len)
-{
-	static u8 i = 0,start = 0;
-	u8 lenth;
-
-	if(ReadUart(USART_PORT_COM2,&package[i],1)==0)//??????
-	{
-			return -1;
-	}
-	
-	if(start)	//
-	{
-	#if 0 
-		//printf("start \r\n");
-		if(package[i] == PACK_HEAD)	//
-		{
-			printf("package agan\r\n");
-			Clear_buffer(package,len);
-			
-			start = 1;
-			i = 0;	//
-			return 0;
-		}
-		#endif
-		
-		if(package[i] == PACK_TAIL)
-		{		
-			lenth = i;
-			start = 0;
-			i = 0;
-			return lenth;
-		}
-		else
-		{
-			i++;
-			if(i==(len-1)) {start = 0;i = 0;mymemset(package,0,len);}	
-			
-		}
-	}
-	if((package[i] == PACK_HEAD)&&(i==0))
-	{
-		i = 0;
-		start = 1;
-		//printf("start \r\n");
-		return 0 ;
-	}
-	return 0;
-}
 
 void printf_fun(int reg,...)   
 {   

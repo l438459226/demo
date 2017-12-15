@@ -23,7 +23,7 @@
 #include "appInterface.h"
 #include "common.h"
 #include "user.h"
-
+#include "Protocol.h"
 u8 bufer[512];
 
 typedef  void (*pFunction0)(void);
@@ -46,8 +46,8 @@ void load_interface(void)
 
 int main(void)
 { 
-	u32 len=0x5674574;
-	//u32 *pp;
+	//u32 i;
+	//int len;
 	
   NVIC_Configuration();
 	delay_init();	    	 //延时函数初始化
@@ -114,15 +114,23 @@ int main(void)
 	//Ymode();
   while(1) 
 	{
-		Current_Volt();
-		//IAP_W25QXX_Init(0xD0,14,0x33,0x5C,0xCB,0x31,0x01,0x10,0x10,0x10,0x19,0x29,0xD0,0x33,0x5C,0xCB);
-		//IAP_W25QXX_Init("sdofihoweoirfhoewi");
-		//printf_fun(0xD0,20,0x33,0x5C,0xCB,0x31,0x01,0x10,0x10,0x10,0x19,0x29,0xD0,0x33,0x5C,0xCB,0x33,0x5C,0xCB,0x31,0x01,0x10);
-		printf_para();
-		Delay_ms(1000);
-		len = ReadUart(USART_PORT_COM2,bufer,1);
-		if(len)
-			printf("read uart:%d   0x%x  \r\n",len,bufer[0]);
+		//Current_Volt();
+		//printf_para();
+// 		len = UnPack(bufer,64);
+// 		//printf("len: %d",len);
+// 		if(len>0){
+// 			for(i=0;i<len;i++)
+// 			{
+// 				printf(" 0x%x",bufer[i]);
+// 			}
+// 			printf("\r\n");
+// 		}
+		
+		protocol_pachk();
+		//Delay_ms(1000);
+		//len = ReadUart(USART_PORT_COM2,bufer,1);
+		//if(len)
+			//printf("read uart:%d   0x%x  \r\n",len,bufer[0]);
 	}			
 	
 }	

@@ -608,7 +608,7 @@ void USART2_IRQHandler(void)                	//串口1中断服务程序
 			
 			Read_Uart(USART_PORT_COM2,USART_RX_BUF,dlen);
 
-			printf("\r\n UART IDLE:%s,%d\r\n",USART_RX_BUF,dlen);
+			//printf("\r\n UART IDLE:%s,%d\r\n",USART_RX_BUF,dlen);
 			
    } 
 	 //printf("\r\n uart2 irq\r\n");

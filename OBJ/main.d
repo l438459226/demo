@@ -60,3 +60,4 @@
 ..\OBJ\main.o: ..\HARDWARE\EXTI\exti.h
 ..\OBJ\main.o: ..\HARDWARE\LT35825\LT35825.h
 ..\OBJ\main.o: ..\HARDWARE\PMU\act8846.h
+..\OBJ\main.o: ..\HARDWARE\Protocol\Protocol.h
