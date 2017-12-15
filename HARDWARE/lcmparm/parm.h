@@ -223,9 +223,9 @@ typedef enum
 	PWR12_LED_PWR_5V_INDEX,
 }POWER_CHANNEL_INDEX_TypeDef;
 
-extern const lcm_parameter lcm_para;
+extern lcm_parameter lcm_para;
 
 u16 Get_Volt_Val(POWER_CHANNEL_INDEX_TypeDef index);
-
+void printf_para(void);
 
 #endif

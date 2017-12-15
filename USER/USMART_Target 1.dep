@@ -1,5 +1,5 @@
 Dependencies for Project 'USMART', Target 'Target 1': (DO NOT MODIFY !)
-F (.\main.c)(0x5A324FDE)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\main.o" --omf_browse "..\OBJ\main.crf" --depend "..\OBJ\main.d")
+F (.\main.c)(0x5A332395)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\main.o" --omf_browse "..\OBJ\main.crf" --depend "..\OBJ\main.d")
 I (..\SYSTEM\delay\delay.h)(0x5A1E5880)
 I (..\SYSTEM\sys\sys.h)(0x5A1F5E14)
 I (..\USER\stm32f10x.h)(0x5A1CAFA1)
@@ -42,7 +42,7 @@ I (..\HARDWARE\FRICKER\Fricker.h)(0x5A323C67)
 I (..\HARDWARE\LT35825\LT35825.h)(0x594B8CD7)
 I (..\HARDWARE\LT3582.h)(0x5A1CAFA1)
 I (..\HARDWARE\PMU\act8846.h)(0x5A1CBAD6)
-I (..\HARDWARE\lcmparm\parm.h)(0x5A2A5619)
+I (..\HARDWARE\lcmparm\parm.h)(0x5A3326C5)
 I (..\HARDWARE\LED\GPIO_Config.h)(0x5A1D0E70)
 I (..\HARDWARE\PMU\TPS22993.h)(0x5A1CF553)
 I (..\HARDWARE\PMU\LM36923.h)(0x5A15421A)
@@ -85,7 +85,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x5A1CAFA1)
 I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x5A1CAFA1)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5A1CAFA1)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x5A1CAFA1)
-F (..\HARDWARE\user\user.c)(0x5A324102)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\user.o" --omf_browse "..\OBJ\user.crf" --depend "..\OBJ\user.d")
+F (..\HARDWARE\user\user.c)(0x5A332A94)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\user.o" --omf_browse "..\OBJ\user.crf" --depend "..\OBJ\user.d")
 I (..\HARDWARE\user\user.h)(0x5A324105)
 I (..\SYSTEM\delay\delay.h)(0x5A1E5880)
 I (..\SYSTEM\sys\sys.h)(0x5A1F5E14)
@@ -129,7 +129,7 @@ I (..\HARDWARE\FRICKER\Fricker.h)(0x5A323C67)
 I (..\HARDWARE\LT35825\LT35825.h)(0x594B8CD7)
 I (..\HARDWARE\LT3582.h)(0x5A1CAFA1)
 I (..\HARDWARE\PMU\act8846.h)(0x5A1CBAD6)
-I (..\HARDWARE\lcmparm\parm.h)(0x5A2A5619)
+I (..\HARDWARE\lcmparm\parm.h)(0x5A3326C5)
 I (..\HARDWARE\LED\GPIO_Config.h)(0x5A1D0E70)
 I (..\HARDWARE\PMU\TPS22993.h)(0x5A1CF553)
 I (..\HARDWARE\PMU\LM36923.h)(0x5A15421A)
@@ -602,7 +602,7 @@ I (..\SYSTEM\delay\delay.h)(0x5A1E5880)
 I (..\HARDWARE\EXTI\exti.h)(0x5A1CAFA1)
 I (..\SYSTEM\usart\usart.h)(0x5A212BBB)
 I (D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x50F96150)
-I (..\HARDWARE\lcmparm\parm.h)(0x5A2A5619)
+I (..\HARDWARE\lcmparm\parm.h)(0x5A3326C5)
 I (..\HARDWARE\LED\GPIO_Config.h)(0x5A1D0E70)
 F (..\HARDWARE\LED\GPIO_Config.c)(0x5A260896)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\gpio_config.o" --omf_browse "..\OBJ\gpio_config.crf" --depend "..\OBJ\gpio_config.d")
 I (..\HARDWARE\LED\GPIO_Config.h)(0x5A1D0E70)
@@ -751,8 +751,8 @@ I (..\HARDWARE\PMU\tester_debug.h)(0x5A1E70BD)
 I (..\SYSTEM\usart\usart.h)(0x5A212BBB)
 I (D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x50F96150)
 I (..\SYSTEM\delay\delay.h)(0x5A1E5880)
-F (..\HARDWARE\lcmparm\parm.c)(0x5A2A45D7)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\parm.o" --omf_browse "..\OBJ\parm.crf" --depend "..\OBJ\parm.d")
-I (..\HARDWARE\lcmparm\parm.h)(0x5A2A5619)
+F (..\HARDWARE\lcmparm\parm.c)(0x5A332A46)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\parm.o" --omf_browse "..\OBJ\parm.crf" --depend "..\OBJ\parm.d")
+I (..\HARDWARE\lcmparm\parm.h)(0x5A3326C5)
 I (..\SYSTEM\sys\sys.h)(0x5A1F5E14)
 I (..\USER\stm32f10x.h)(0x5A1CAFA1)
 I (..\CORE\core_cm3.h)(0x5A1CAFA1)
@@ -768,6 +768,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5A1CAFA1)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x5A1CAFA1)
 I (..\SYSTEM\usart\usart.h)(0x5A212BBB)
 I (D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x50F96150)
+I (..\HARDWARE\Appinterface\appInterface.h)(0x5A2F7677)
 F (..\HARDWARE\UART_DMA\Uart.c)(0x5A325583)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\uart.o" --omf_browse "..\OBJ\uart.crf" --depend "..\OBJ\uart.d")
 I (..\SYSTEM\sys\sys.h)(0x5A1F5E14)
 I (..\USER\stm32f10x.h)(0x5A1CAFA1)
@@ -881,7 +882,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5A1CAFA1)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x5A1CAFA1)
 I (..\HARDWARE\Ymodem\ymodem.h)(0x5A325475)
 I (..\STM32F10x_FWLib\inc\stm32f10x_flash.h)(0x5A1CAFA1)
-F (..\HARDWARE\Appinterface\appInterface.c)(0x5A31CAB9)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\appinterface.o" --omf_browse "..\OBJ\appinterface.crf" --depend "..\OBJ\appinterface.d")
+F (..\HARDWARE\Appinterface\appInterface.c)(0x5A331E8E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\delay -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\LCD -I..\USMART -I..\HARDWARE\ADC -I..\HARDWARE\EXTI -I..\HARDWARE\IIC -I..\HARDWARE\KEY -I..\HARDWARE\SSD -I..\HARDWARE\TIMER -I..\MALLOC -I..\HARDWARE -I..\CMSIS\Include -I..\STM32F10x_DSP_Lib\inc -I..\HARDWARE\FRICKER -I..\HARDWARE\IIC -I..\HARDWARE\LT35825 -I..\HARDWARE -I..\HARDWARE\PMU -I..\HARDWARE\lcmparm -I..\HARDWARE\UART_DMA -I..\HARDWARE\Ymodem -I..\HARDWARE\Appinterface -I..\HARDWARE\user --C99 -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DARM_MATH_CM3 -o "..\OBJ\appinterface.o" --omf_browse "..\OBJ\appinterface.crf" --depend "..\OBJ\appinterface.d")
 I (..\SYSTEM\delay\delay.h)(0x5A1E5880)
 I (..\SYSTEM\sys\sys.h)(0x5A1F5E14)
 I (..\USER\stm32f10x.h)(0x5A1CAFA1)
@@ -924,7 +925,7 @@ I (..\HARDWARE\FRICKER\Fricker.h)(0x5A323C67)
 I (..\HARDWARE\LT35825\LT35825.h)(0x594B8CD7)
 I (..\HARDWARE\LT3582.h)(0x5A1CAFA1)
 I (..\HARDWARE\PMU\act8846.h)(0x5A1CBAD6)
-I (..\HARDWARE\lcmparm\parm.h)(0x5A2A5619)
+I (..\HARDWARE\lcmparm\parm.h)(0x5A3326C5)
 I (..\HARDWARE\LED\GPIO_Config.h)(0x5A1D0E70)
 I (..\HARDWARE\PMU\TPS22993.h)(0x5A1CF553)
 I (..\HARDWARE\PMU\LM36923.h)(0x5A15421A)

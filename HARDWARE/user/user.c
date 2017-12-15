@@ -48,7 +48,7 @@ int UnPack(u8 *package,u8 len)
 			Clear_buffer(package,len);
 			
 			start = 1;
-			i = 0;	//?????
+			i = 0;	//
 			return 0;
 		}
 		#endif
@@ -76,10 +76,6 @@ int UnPack(u8 *package,u8 len)
 	}
 	return 0;
 }
-
-
-
-
 
 void printf_fun(int reg,...)   
 {   

@@ -1,6 +1,6 @@
 #include "parm.h"
 #include "usart.h"
-
+#include "appInterface.h"
 #include "sys.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
@@ -55,7 +55,7 @@ void LED_Init(void)
 //u32 rw[10] __attribute__ ((section ("codeinterge"))) ; 
 
 
-const lcm_parameter lcm_para={
+lcm_parameter lcm_para={
 	
 	.G_Select_Port = 1,
 	.G_disp_width = 1080,
@@ -242,5 +242,21 @@ u16 Get_Volt_Val(POWER_CHANNEL_INDEX_TypeDef index)
 	return para[index];
 	
 }
+
+void printf_para(void)
+{
+	u32 i ;
+	u16 *para = (u16*)(((u32*)(interface))[19]);
+	
+	printf("lcm_para:");
+	for(i=0;i<15;i++)
+	{
+			printf(" %d",para[i]);
+	}
+	printf("\r\n");
+}
+
+
+
 
 

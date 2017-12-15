@@ -16,3 +16,4 @@
 ..\OBJ\parm.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\OBJ\parm.o: ..\SYSTEM\usart\usart.h
 ..\OBJ\parm.o: D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\parm.o: ..\HARDWARE\Appinterface\appInterface.h

@@ -79,7 +79,7 @@ I (..\USER\stm32f10x_conf.h)(0x50CF2F1E)
 I (..\STM32F10x_FWLib\inc\stm32f10x_gpio.h)(0x50515FBA)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
-F (..\HARDWARE\Appinterface\appInterface.c)(0x5A323456)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\sys -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\Appinterface -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o "..\OBJ\appinterface.o" --omf_browse "..\OBJ\appinterface.crf" --depend "..\OBJ\appinterface.d")
+F (..\HARDWARE\Appinterface\appInterface.c)(0x5A332763)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\sys -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\Appinterface -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o "..\OBJ\appinterface.o" --omf_browse "..\OBJ\appinterface.crf" --depend "..\OBJ\appinterface.d")
 I (..\HARDWARE\Appinterface\appInterface.h)(0x5A323450)
 I (..\SYSTEM\sys\sys.h)(0x5055B57C)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
