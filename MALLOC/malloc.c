@@ -29,8 +29,8 @@ struct _m_mallco_dev mallco_dev=
 {
 	mem_init,				//内存初始化
 	mem_perused,			//内存使用率
-	mem1base,		//内存池
-	mem1mapbase,//内存管理状态表
+	mem1base,				//内存池
+	mem1mapbase,			//内存管理状态表
 	0,  					//内存管理未就绪
 };
 
@@ -57,7 +57,7 @@ void mymemset(void *s,u8 c,u32 count)
 //memx:所属内存块
 void mem_init(u8 memx)  
 {  
-  mymemset(mallco_dev.memmap[memx], 0,memtblsize[memx]*2);//内存状态表数据清零  
+	mymemset(mallco_dev.memmap[memx], 0,memtblsize[memx]*2);//内存状态表数据清零  
 	mymemset(mallco_dev.membase[memx], 0,memsize[memx]);	//内存池所有数据清零  
 	mallco_dev.memrdy[memx]=1;								//内存管理初始化OK  
 }  
@@ -85,12 +85,13 @@ u32 mem_malloc(u8 memx,u32 size)
 	u16 cmemb=0;//连续空内存块数
     u32 i;  
     if(!mallco_dev.memrdy[memx])mallco_dev.init(memx);//未初始化,先执行初始化 
+    
     if(size==0)return 0XFFFFFFFF;//不需要分配
     nmemb=size/memblksize[memx];  	//获取需要分配的连续内存块数
     if(size%memblksize[memx])nmemb++;  
     for(offset=memtblsize[memx]-1;offset>=0;offset--)//搜索整个内存控制区  
     {     
-		if(!mallco_dev.memmap[memx][offset])cmemb++;//连续空内存块数增加
+		if(!mallco_dev.memmap[memx][offset])cmemb++;//内存管理表 连续空内存块数增加 u16 mem1mapbase[MEM1_ALLOC_TABLE_SIZE];
 		else cmemb=0;								//连续内存块清零
 		if(cmemb==nmemb)							//找到了连续nmemb个空内存块
 		{
@@ -98,7 +99,7 @@ u32 mem_malloc(u8 memx,u32 size)
             {  
                 mallco_dev.memmap[memx][offset+i]=nmemb;  
             }  
-            return (offset*memblksize[memx]);//返回偏移地址  
+            return (offset*memblksize[memx]);	//返回偏移地址  
 		}
     }  
     return 0XFFFFFFFF;//未找到符合分配条件的内存块  

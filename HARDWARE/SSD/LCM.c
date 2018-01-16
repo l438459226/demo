@@ -70,14 +70,18 @@ void print_panelinfo(void)
 
 void SSD_LANE(u8 lane,u16 clock)
 {
+	unsigned int Dsi_mbpss;
 	Write_SSPI_REG(0xB9, 0x0000);
+	Write_SSPI_REG(0xB8, 0x0000);
 	Write_SSPI_REG(0xB6, 0x000B);	//non burst sync event, 24bpp
 	if(clock)
-			Write_SSPI_REG(0xBA, dsi_clock(clock));//  0xC367--824
-	else 	Write_SSPI_REG(0xBA, dsi_clock(panel_info.pclk*24/panel_info.dsi_lane + 8));
+			Dsi_mbpss = clock;//  0xC367--824
+	else 	Dsi_mbpss = panel_info.pclk*24/panel_info.dsi_lane + 8;
+	
+	Write_SSPI_REG(0xBA, dsi_clock(Dsi_mbpss));//
 	Write_SSPI_REG(0xDE, (lane-1));	//LANE  0--1 lane  1--2 lane  2--3 lane  3--4 lane
 	Write_SSPI_REG(0x00B9,0x0001);
-	delay_us(100);
+	Delay_ms(20);
 }
 
 	//	//Tips:	SSD_MODE([0], [1])
@@ -103,64 +107,57 @@ void SSD_MODE(u8 vido_mode,u8 mode)
 	else 	Write_SSPI_REG(0xB7, 0x0301);
 }
 
-void InitMipi_PanelInit23(void)///////
+void SSDD(u8 lane,u16 clock)
 {
-	SSD2828GPIOConfig();
+	unsigned int Dsi_mbpss;
+	Write_SSPI_REG(0xB9, 0x0000);
+	Write_SSPI_REG(0xB8, 0x0000);
+	Write_SSPI_REG(0xB6, 0x000B);	//non burst sync event, 24bpp
+	if(clock)
+			Dsi_mbpss = clock;//  0xC367--824
+	else 	Dsi_mbpss = panel_info.pclk*24/panel_info.dsi_lane + 8;
+	
+	Write_SSPI_REG(0xBA, dsi_clock(Dsi_mbpss));//
+	Write_SSPI_REG(0xDE, (lane-1));	//LANE  0--1 lane  1--2 lane  2--3 lane  3--4 lane
+	Write_SSPI_REG(0x00B9,0x0001);
+	Delay_ms(20);
+}
+
+void InitMipi_PanelInit(void)///////
+{
+	//SSD2828GPIOConfig();
   SSD_RESET = 1;	
-	delay_us(50);
+	delay_ms(50);
   SSD_RESET = 0;	
-	delay_us(50);
+	delay_ms(50);
   SSD_RESET = 1;	
 	
 	panel_info.width = 1080;
-	panel_info.height = 1920;
+	panel_info.height = 2160;
 	panel_info.pixel = 24;
-	panel_info.fps = 60;		//60赫兹
+	panel_info.fps = 46;		//60赫兹
 	
-	panel_info.hsync = 10;
-	panel_info.hbp = 24;
-	panel_info.hfp = 48;
+	panel_info.hsync = 2;
+	panel_info.hbp = 50;
+	panel_info.hfp = 87;
 	
 	panel_info.vsync = 2;
-	panel_info.vbp = 17;
-	panel_info.vfp = 24;
+	panel_info.vbp = 5;
+	panel_info.vfp = 45;
 	
 	panel_info.pclk = panel_info.fps * ((panel_info.width + panel_info.hsync + panel_info.hbp + panel_info.hfp) * (panel_info.height + panel_info.vsync + panel_info.vbp + panel_info.vfp))/1000000;
-	//panel_info.fps = (panel_info.pclk*1000000)/((panel_info.width + panel_info.hsync + panel_info.hbp + panel_info.hfp) * (panel_info.height + panel_info.vsync + panel_info.vbp + panel_info.vfp));	      
-	
+
 	panel_info.dsi_lane = 4;			//
-	//panel_info.dsi_mbps = 824;		//自己设置mbps   自动计算mbps
 	panel_info.dsi_mbps = panel_info.pclk*24/panel_info.dsi_lane + 8;		//多8m校验数据
 	
 	print_panelinfo();
 	
-/*	
-	Write_SSPI_REG(0xB9, 0x0000);
-	Write_SSPI_REG(0xB6, 0x000B);	//non burst sync event, 24bpp
-	Write_SSPI_REG(0xBA, dsi_clock(panel_info.dsi_mbps));	//  0xC367--824
-	Write_SSPI_REG(0xDE, (panel_info.dsi_lane-1));	//LANE  0--1 lane  1--2 lane  2--3 lane  3--4 lane
-	Write_SSPI_REG(0x00B9,0x0001);
-	delay_us(100);
-*/
+
 	SSD_LANE(4,0);
 	/**************************************************/		
 	//LCDD (Peripheral) Setting		
    //**************************************************/	
 
-
-/*
-	Write_SSPI_REG(0xB1, (panel_info.vsync<<8)|panel_info.hsync);			//VSA  HAS
-	Write_SSPI_REG(0xB2, (panel_info.vbp<<8)|panel_info.hbp);			//VBP+10 HBP						
-	Write_SSPI_REG(0xB3, (panel_info.vfp<<8)|(panel_info.hfp));			//VFP HFP								
-	Write_SSPI_REG(0xB4, panel_info.width);					//						        	
-	Write_SSPI_REG(0xB5, panel_info.height);				//
-	
-	hs_settime(panel_info.dsi_mbps);
-	
-	
-	Write_SSPI_REG(0xB6, 0x00D3);	//non burst sync event, 24bpp
-	Write_SSPI_REG(0xB7, 0x030B);
-	*/
 	SSD_MODE(0,1);	
 }
 
@@ -447,7 +444,7 @@ void InitMipi_PanelInitt(void)
 
 
 
-void InitMipi_PanelInit(void)
+void InitMipi_PanelInit78(void)
 {
 	SSD2828GPIOConfig();
   SSD_RESET = 1;	

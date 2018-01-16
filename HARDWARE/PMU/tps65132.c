@@ -180,7 +180,7 @@ int Tps65132_Init(u16 vsp, u16 vsn)
 {
 	tps65132_set_voltage(vsn,1);			//…Ë÷√VSP VSNµÁ—π
 	tps65132_set_voltage(vsp,0);	
-	tps65132_set_mode(0,1,1);	
+	tps65132_set_mode(1,1,1);	
 	return 0;
 }
 

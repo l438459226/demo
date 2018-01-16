@@ -350,7 +350,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER,ARM_MATH_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>..\HARDWARE\LED;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\LCD;..\USMART;..\HARDWARE\ADC;..\HARDWARE\EXTI;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\SSD;..\HARDWARE\TIMER;..\MALLOC;..\HARDWARE;..\CMSIS\Include;..\STM32F10x_DSP_Lib\inc;..\HARDWARE\FRICKER;..\HARDWARE\IIC;..\HARDWARE\LT35825;..\HARDWARE;..\HARDWARE\PMU;..\HARDWARE\lcmparm;..\HARDWARE\UART_DMA;..\HARDWARE\Ymodem;..\HARDWARE\Appinterface;..\HARDWARE\user;..\HARDWARE\Protocol;..\HARDWARE\CRC16</IncludePath>
+              <IncludePath>..\HARDWARE\LED;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\STM32F10x_FWLib\inc;..\CORE;..\HARDWARE\LCD;..\USMART;..\HARDWARE\ADC;..\HARDWARE\EXTI;..\HARDWARE\IIC;..\HARDWARE\KEY;..\HARDWARE\SSD;..\HARDWARE\TIMER;..\MALLOC;..\HARDWARE;..\CMSIS\Include;..\STM32F10x_DSP_Lib\inc;..\HARDWARE\FRICKER;..\HARDWARE\IIC;..\HARDWARE\LT35825;..\HARDWARE;..\HARDWARE\PMU;..\HARDWARE\lcmparm;..\HARDWARE\UART_DMA;..\HARDWARE\Ymodem;..\HARDWARE\Appinterface;..\HARDWARE\user;..\HARDWARE\Protocol;..\HARDWARE\CRC16;..\HARDWARE\SSD</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -410,6 +410,11 @@
               <FileName>user.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\user\user.c</FilePath>
+            </File>
+            <File>
+              <FileName>ili9881c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SSD\ili9881c.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -780,6 +785,26 @@
               <FileName>CRC16.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\CRC16\CRC16.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SSD2828</GroupName>
+          <Files>
+            <File>
+              <FileName>ssd2828.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SSD\ssd2828.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SSD\LCM.c</FilePath>
+            </File>
+            <File>
+              <FileName>gxnussd2828.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SSD\gxnussd2828.c</FilePath>
             </File>
           </Files>
         </Group>
