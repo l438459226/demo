@@ -53,7 +53,7 @@ void SSD2828GPIOConfig(void)	//PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure); //GPIOA	
 	
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_14|GPIO_Pin_1;//PA6
+	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0|GPIO_Pin_1;//PA6
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //???????
  	GPIO_Init(GPIOB, &GPIO_InitStructure);//???GPIOA6
 	
@@ -84,6 +84,16 @@ void SSD2828GPIOFree(void)	//PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
 	SPI_SCLK =	 1;
 	SSD_RESET =  0;
 	
+}
+
+void SPI_SDCS(u8 bit)   	//0 or 1 发送给芯片
+{
+	
+  SSD_CS = bit;//拉低时钟开始数据传输
+	SSD_CS = bit;
+	
+	if(RDAD_SPI_CS != bit)
+		printf("SPI_CS error\r\n");
 }
 
 void SPI_SDIN(u8 bit)   	//0 or 1 发送给芯片
@@ -133,11 +143,11 @@ void W_byte(unsigned char cmd)
 		SPI_SCK(1);
     for (i=0;i<8;i++)
     {
-			delay_us(1); 
+			delay_us(5); 
 			SPI_SCK(0);
 			if((cmd & 0x80) != 0)	SPI_SDIN(1);
 				else  SPI_SDIN(0);
-			delay_us(1); 
+			delay_us(5); 
 			SPI_SCK(1);
 			cmd = cmd<<1;
     }
@@ -155,18 +165,9 @@ u8 SSD2828Read(void)
 	{
 		tmp <<= 1;
 		SPI_SCLK = 0;
+		delay_us(5); 
     SPI_SCLK = 1;
-		delay_us(1); 
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
-		if(SPI_SDO) tmp |= 0x01;
+		delay_us(5); 
 		if(SPI_SDO) tmp |= 0x01;
 		if(SPI_SDO) tmp |= 0x01;
 		if(SPI_SDO) tmp |= 0x01;
@@ -255,19 +256,19 @@ u16 ssd_rdata(u8 reg)
 {
 	u16 parmer;
 	
-	SSD_CS = 0;		//GPIO_ResetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 0;
+	SSD_CS = 0;//SPI_SDCS(0);	//SSD_CS = 0;		//GPIO_ResetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 0;
 	W_byte(0x70);	//写寄存器
 	W_byte(0x00);
 	W_byte(reg);
-	SSD_CS = 1;		//GPIO_SetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 1;
+	SPI_SDCS(1);//SSD_CS = 1;		//GPIO_SetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 1;
 	
-	delay_us(1);
+	//delay_us(10);
 	
-	SSD_CS = 0;		//GPIO_ResetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 0;
+	SPI_SDCS(0);//SSD_CS = 0;		//GPIO_ResetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 0;
 	W_byte(0x73);	//读数据指令
 	parmer = SSD2828Read();
 	parmer = (parmer<<8)|SSD2828Read();
-	SSD_CS = 1; 	//GPIO_SetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 1;
+	SPI_SDCS(1);//SSD_CS = 1; 	//GPIO_SetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 1;
 
 	return parmer;
 }

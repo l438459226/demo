@@ -7,7 +7,7 @@
 
 void led_flash(void)
 {
-	u8 i=5;
+	u8 i=2
 	u8 per;
 	u32 *bufer;
 	

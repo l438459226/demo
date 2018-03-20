@@ -222,10 +222,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>12</ColumnNumber>
+      <ColumnNumber>31</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>267</TopLine>
-      <CurrentLine>212</CurrentLine>
+      <TopLine>215</TopLine>
+      <CurrentLine>293</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -272,8 +272,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>16</TopLine>
-      <CurrentLine>1</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\user\user.c</PathWithFileName>
       <FilenameWithoutPath>user.c</FilenameWithoutPath>
@@ -288,7 +288,7 @@
       <Focus>0</Focus>
       <ColumnNumber>30</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>154</TopLine>
+      <TopLine>161</TopLine>
       <CurrentLine>174</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\SSD\ili9881c.c</PathWithFileName>
@@ -646,10 +646,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>25</ColumnNumber>
+      <ColumnNumber>15</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>6</TopLine>
+      <CurrentLine>24</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\USMART\usmart_config.c</PathWithFileName>
       <FilenameWithoutPath>usmart_config.c</FilenameWithoutPath>
@@ -860,7 +860,7 @@
 
   <Group>
     <GroupName>Fricker</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -872,8 +872,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>10</TopLine>
+      <CurrentLine>29</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\FRICKER\Fricker.c</PathWithFileName>
       <FilenameWithoutPath>Fricker.c</FilenameWithoutPath>
@@ -896,8 +896,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>183</TopLine>
-      <CurrentLine>192</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\IIC\myiic.c</PathWithFileName>
       <FilenameWithoutPath>myiic.c</FilenameWithoutPath>
@@ -998,10 +998,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>55</ColumnNumber>
+      <ColumnNumber>25</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>198</TopLine>
+      <CurrentLine>216</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\LED\GPIO_Config.c</PathWithFileName>
       <FilenameWithoutPath>GPIO_Config.c</FilenameWithoutPath>
@@ -1124,7 +1124,7 @@
 
   <Group>
     <GroupName>lcmparm</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1132,12 +1132,12 @@
       <GroupNumber>15</GroupNumber>
       <FileNumber>51</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>13</ColumnNumber>
+      <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>61</TopLine>
+      <CurrentLine>59</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\lcmparm\parm.c</PathWithFileName>
       <FilenameWithoutPath>parm.c</FilenameWithoutPath>
@@ -1158,10 +1158,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>56</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\UART_DMA\Uart.c</PathWithFileName>
       <FilenameWithoutPath>Uart.c</FilenameWithoutPath>
@@ -1176,8 +1176,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\UART_DMA\UartQue.c</PathWithFileName>
       <FilenameWithoutPath>UartQue.c</FilenameWithoutPath>
@@ -1188,7 +1188,7 @@
 
   <Group>
     <GroupName>Ymode</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1270,10 +1270,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>33</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>14</TopLine>
-      <CurrentLine>26</CurrentLine>
+      <TopLine>26</TopLine>
+      <CurrentLine>51</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\Appinterface\appInterface.c</PathWithFileName>
       <FilenameWithoutPath>appInterface.c</FilenameWithoutPath>
@@ -1294,10 +1294,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>3</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>61</TopLine>
-      <CurrentLine>28</CurrentLine>
+      <TopLine>56</TopLine>
+      <CurrentLine>69</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\Protocol\Protocol.c</PathWithFileName>
       <FilenameWithoutPath>Protocol.c</FilenameWithoutPath>
@@ -1342,10 +1342,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>47</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>222</TopLine>
-      <CurrentLine>223</CurrentLine>
+      <TopLine>14</TopLine>
+      <CurrentLine>25</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\SSD\ssd2828.c</PathWithFileName>
       <FilenameWithoutPath>ssd2828.c</FilenameWithoutPath>
@@ -1358,10 +1358,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>31</ColumnNumber>
+      <ColumnNumber>26</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>109</TopLine>
-      <CurrentLine>113</CurrentLine>
+      <TopLine>5</TopLine>
+      <CurrentLine>50</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\SSD\LCM.c</PathWithFileName>
       <FilenameWithoutPath>LCM.c</FilenameWithoutPath>
@@ -1374,10 +1374,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>37</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>100</TopLine>
-      <CurrentLine>117</CurrentLine>
+      <TopLine>17</TopLine>
+      <CurrentLine>22</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\HARDWARE\SSD\gxnussd2828.c</PathWithFileName>
       <FilenameWithoutPath>gxnussd2828.c</FilenameWithoutPath>

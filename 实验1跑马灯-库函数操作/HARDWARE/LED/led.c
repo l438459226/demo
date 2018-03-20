@@ -1,27 +1,27 @@
 #include "led.h"
 
 //////////////////////////////////////////////////////////////////////////////////	 
-//±¾³ÌÐòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßÐí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ALIENTEKÕ½½¢STM32¿ª·¢°å
-//LEDÇý¶¯´úÂë	   
-//ÕýµãÔ­×Ó@ALIENTEK
-//¼¼ÊõÂÛÌ³:www.openedv.com
-//ÐÞ¸ÄÈÕÆÚ:2012/9/2
-//°æ±¾£ºV1.0
-//°æÈ¨ËùÓÐ£¬µÁ°æ±Ø¾¿¡£
-//Copyright(C) ¹ãÖÝÊÐÐÇÒíµç×Ó¿Æ¼¼ÓÐÏÞ¹«Ë¾ 2009-2019
+//æœ¬ç¨‹åºåªä¾›å­¦ä¹ ä½¿ç”¨ï¼Œæœªç»ä½œè€…è®¸å¯ï¼Œä¸å¾—ç”¨äºŽå…¶å®ƒä»»ä½•ç”¨é€”
+//ALIENTEKæˆ˜èˆ°STM32å¼€å‘æ¿
+//LEDé©±åŠ¨ä»£ç 	   
+//æ­£ç‚¹åŽŸå­@ALIENTEK
+//æŠ€æœ¯è®ºå›:www.openedv.com
+//ä¿®æ”¹æ—¥æœŸ:2012/9/2
+//ç‰ˆæœ¬ï¼šV1.0
+//ç‰ˆæƒæ‰€æœ‰ï¼Œç›—ç‰ˆå¿…ç©¶ã€‚
+//Copyright(C) å¹¿å·žå¸‚æ˜Ÿç¿¼ç”µå­ç§‘æŠ€æœ‰é™å…¬å¸ 2009-2019
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	   
 
-//³õÊ¼»¯PB5ºÍPE5ÎªÊä³ö¿Ú.²¢Ê¹ÄÜÕâÁ½¸ö¿ÚµÄÊ±ÖÓ		    
-//LED IO³õÊ¼»¯
+//åˆå§‹åŒ–PB5å’ŒPE5ä¸ºè¾“å‡ºå£.å¹¶ä½¿èƒ½è¿™ä¸¤ä¸ªå£çš„æ—¶é’Ÿ		    
+//LED IOåˆå§‹åŒ–
 void LED_Init(void)
 {
  
 		GPIO_InitTypeDef GPIO_InitStructure;
 
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE); 
-		GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable , ENABLE);	//½ûÖ¹jtag Ê¹ÄÜswd
+		GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable , ENABLE);	//ç¦æ­¢jtag ä½¿èƒ½swd
 	
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); 											   
   	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
@@ -29,6 +29,6 @@ void LED_Init(void)
   	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
   	GPIO_Init(GPIOB, &GPIO_InitStructure);			
 
-		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
+		GPIO_ResetBits(GPIOB,GPIO_Pin_3)
 }
  

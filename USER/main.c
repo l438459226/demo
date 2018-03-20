@@ -147,7 +147,7 @@ int main(void)
 	INA226_Volt();
 	
 
-	SSD2828GPIOConfig();
+	
 	RELAY_UA_IOVCC_ON_OFF(0);
 	TPS22993_IOVCC_ON_OFF(1);
 	Delay_ms(20);
@@ -156,7 +156,9 @@ int main(void)
 	Delay_ms(20);
 	VSN_ON();
 	Delay_ms(100);
-		 
+		Ymode();
+	SSD2828GPIOConfig();
+
 	Write_SSPI_REG(0xC0, 0x0100);
 	Delay_ms(100);
 	Write_SSPI_REG(0xC0, 0x0000);
@@ -209,9 +211,9 @@ int main(void)
 	DETECT_LED1N_ON_OFF(1);
 	DETECT_LED2N_ON_OFF(1);
 	Delay_ms(100);
-	//Ymode();
+	Ymode();
 
-	printf("0xB2 = 0x%x\r\n",ssd_rdata(0xB2));
+	printf("0xB0 = 0x%x\r\n",ssd_rdata(0xB0));
 
 	printf("SSD READ:\r\n");
 	for(i=0xB0;i<0XF8;i++)
@@ -225,8 +227,8 @@ int main(void)
 		
 		//Generic_Short_Write_1P(0x00, 0x80);
 		//DCS_Long_Write_7P(0xc7, 0x00,0x15,0x36,0x4a,0x59,0x65,0x77);
-// 	Generic_Short_Write_1P(0xB0, 0x04);
-// 	Generic_Long_Write_5P(0xDE, 0x01,0x00,0x0F,0xFF,0x05);
+		// 	Generic_Short_Write_1P(0xB0, 0x04);
+		// 	Generic_Long_Write_5P(0xDE, 0x01,0x00,0x0F,0xFF,0x05);
 
 	//Generic_Short_Write_1P(0xB0, 0x04);
 	//Generic_Short_Write_1P(0xB0, 0x04);
@@ -251,6 +253,14 @@ int main(void)
 	//DCS_Write(0xDE,5,0x01,0x00,0x0F,0xFF,0x05);
 	DCS_Write(0xC3,7,0x86,0xD8,0x6D,0x57,0x23,0x4A,0xE5);
 	Delay_ms(200);
+	
+	while(1)
+	{
+		printf("0xB0 = 0x%x\r\n",ssd_rdata(0xB0));
+		Delay_ms(1000);
+	}
+	
+	
 	while(1) 
 	{
 		//ssd_rdata(0xB0);
