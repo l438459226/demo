@@ -20,11 +20,17 @@
 							  
 ///////////////////////////////////////////////////////////////////////////////
 
-#define SPI_SDO		   GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_6)  		//输入		PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
-#define SSD_CS       PAout(3)		//GPIO_SetBits(GPIOA,GPIO_Pin_3)		//PAout(3) 		//
-#define SPI_SCLK     PAout(5)
-#define SPI_SDI      PAout(7)
-#define SSD_RESET    PBout(4) 
+///////////////////////////////////////////////////////////////////////////////
+#define SPI_SDO		   			PBin(0)			//GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_1)//PBin(1)//GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_14)  		//??		PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
+#define SSD_CS       			PBout(12)		//GPIO_SetBits(GPIOA,GPIO_Pin_3)		//PAout(3) 		//
+#define SPI_SCLK     			PBout(13)
+#define SPI_SDI      			PBout(15)
+#define RDAD_SPI_CS     	PBin(12)
+#define RDAD_SPI_SDI      PBin(15)
+
+#define RDAD_SPI_SCLK     PBin(13)
+#define SSD_RESET    			PBout(7) 
+
 
 #define MIPI_SINGLE 0X00	  //包含1,2,3,4LANE的接口
 #define MIPI_DOUBLE 0X01      //即8LANE	MIPI接口															 
@@ -106,6 +112,9 @@ void DCS_Long_Write_6P(u8 Generic,u8 Parma1,u8 Parma2,u8 Parma3,u8 Parma4,u8 Par
 void DCS_Long_Write_7P(u8 Generic,u8 Parma1,u8 Parma2,u8 Parma3,u8 Parma4,u8 Parma5,u8 Parma6,u8 Parma7);
 void DCS_Long_Write_FIFO(u16 num,u16 *P);
 void DCS_Long_Write_8FIFO(u16 num,u8 *P);
+
+void DCS_Write(int reg,...);
+void  Generic_Write(int reg,...);
 
 u8 DCS_Short_Read_NP(u16 cmd, u8 cnt, u8 *val);
 #endif

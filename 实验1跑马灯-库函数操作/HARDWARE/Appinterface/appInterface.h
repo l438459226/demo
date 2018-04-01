@@ -28,8 +28,8 @@ typedef u32 (*inface_mem_malloc)(u8 memx,u32 size);
 typedef u8  (*inface_mem_free)(u8 memx,u32 offset);		 
 typedef u8  (*inface_mem_perused)(u8 memx);				 
 typedef void (*inface_myfree)(u8 memx,void *ptr);  			
-typedef void (**inface_mymalloc)(u8 memx,u32 size);			
-typedef void (**inface_myrealloc)(u8 memx,void *ptr,u32 size);
+//typedef void *(*inface_mymalloc)(u8 memx,u32 size);	
+//typedef void *(*inface_myrealloc)(u8 memx,void *ptr,u32 size);
 typedef void (*inface_IIC_Init)(void);              		 
 typedef int  (*inface_IIC_Start)(void);			
 typedef void (*inface_IIC_Stop)(void);	  		
@@ -43,6 +43,8 @@ typedef void (*inface_Set_Voutn)(float voltage);
 typedef void (*inface_Voutp_Upfirst)(void);
 typedef void (*inface_LM36923_Init)(u16 val);
 
+
+
 EXTER_INTERFACE_FUN(printff);
 EXTER_INTERFACE_FUN(delay_ms);
 EXTER_INTERFACE_FUN(delay_us);
@@ -55,8 +57,8 @@ EXTER_INTERFACE_FUN(mem_malloc);
 EXTER_INTERFACE_FUN(mem_free);
 EXTER_INTERFACE_FUN(mem_perused);
 EXTER_INTERFACE_FUN(myfree);
-EXTER_INTERFACE_FUN(mymalloc);
-EXTER_INTERFACE_FUN(myrealloc);
+//EXTER_INTERFACE_FUN(mymalloc);
+//EXTER_INTERFACE_FUN(myrealloc);
 EXTER_INTERFACE_FUN(IIC_Init);
 EXTER_INTERFACE_FUN(IIC_Start);
 EXTER_INTERFACE_FUN(IIC_Stop);

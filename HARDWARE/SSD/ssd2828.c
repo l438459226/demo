@@ -1,6 +1,8 @@
 #include "ssd2828.h"
 #include "usart.h"
-#include "spi.h"			
+#include "spi.h"	
+#include "Uart.h"
+#include "user.h"
 
 
 unsigned int Lcd_DCLK = 135;	  //DCLK频率设置 单位为MHz 最大值150MH左右
@@ -28,7 +30,8 @@ unsigned int Lcd_MODE = 0X00;  //接口方式 MIPI_8LANE 或 MIPI_4LANE	 请用上面的宏
 #define LP 0
 #define HS 1
 #define VD 2
-unsigned int mode = 2; 
+unsigned int mode = 0; 
+
 
 /*----------------------------------------------------------------------------*/
 void SSD2828GPIOConfig(void)	//PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
@@ -36,32 +39,32 @@ void SSD2828GPIOConfig(void)	//PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
 	
 	GPIO_InitTypeDef  GPIO_InitStructure;
 
- 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_AFIO, ENABLE); //使能PORTA,和AFIO时钟
-	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);//
+ 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_AFIO, ENABLE); //??PORTA,?AFIO??
+	//GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);//
 	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_7;	   ///PORTC 3 5 6 7 复用推挽输出
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_15|GPIO_Pin_0;	   ///PORTC 3 5 6 7 ??????
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOA, &GPIO_InitStructure); //GPIOA	
+	GPIO_Init(GPIOB, &GPIO_InitStructure); //GPIOA	
 	
 	
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;	   ///PORTC 3 5 6 7 复用推挽输出
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14;	   ///PORTC 3 5 6 7 ??????
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;   
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOA, &GPIO_InitStructure); //GPIOA	
+	GPIO_Init(GPIOB, &GPIO_InitStructure); //GPIOA	
 	
-	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_6;//PA6
+	GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_0|GPIO_Pin_1;//PA6
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; //???????
- 	GPIO_Init(GPIOA, &GPIO_InitStructure);//???GPIOA6
+ 	GPIO_Init(GPIOB, &GPIO_InitStructure);//???GPIOA6
 	
-	GPIO_ResetBits(GPIOA,GPIO_Pin_6);
-	
+
 	SSD_CS = 1;
 	SPI_SDI = 1;
-	SPI_SCLK = 0;
+	SPI_SCLK = 1;
 	SSD_RESET = 1;
 	
 }
+
 
 void SSD2828GPIOFree(void)	//PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
 {
@@ -76,52 +79,100 @@ void SSD2828GPIOFree(void)	//PA3-SPI_CS    PA5-SPI_CLK   PA6-MISO   PA7-MOSI
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure); 				//GPIOA	
 
-	SSD_CS =		 0;
-	SPI_SDI = 	 0;
-	SPI_SCLK =	 0;
+	SSD_CS =		 1;
+	SPI_SDI = 	 1;
+	SPI_SCLK =	 1;
 	SSD_RESET =  0;
 	
 }
 
+void SPI_SDCS(u8 bit)   	//0 or 1 发送给芯片
+{
+	
+  SSD_CS = bit;//拉低时钟开始数据传输
+	SSD_CS = bit;
+	
+	if(RDAD_SPI_CS != bit)
+		printf("SPI_CS error\r\n");
+}
 
+void SPI_SDIN(u8 bit)   	//0 or 1 发送给芯片
+{
+	
+  SPI_SDI = bit;//拉低时钟开始数据传输
+	SPI_SDI = bit;
+	
+	if(RDAD_SPI_SDI != bit)
+		printf("SPI_SDI error\r\n");
+}
+
+void SPI_SCK(u8 bit)   	//0 or 1 发送给芯片
+{
+	
+  SPI_SCLK = bit;//拉低时钟开始数据传输
+	SPI_SCLK = bit;
+	
+	if(RDAD_SPI_SCLK != bit)
+		printf("RDAD_SPI_SCLK error\r\n");
+}
+#if 0
 void W_byte(unsigned char cmd)
 {   
 		u8 i;
 	
-		SPI_SDI = 0;
-		SPI_SCLK = 0;
+		SPI_SDI = 1;
+		SPI_SCLK = 1;
     for (i=0;i<8;i++)
     {
+			delay_us(3); 
 			SPI_SCLK = 0;
-			
 			if((cmd & 0x80) != 0)	SPI_SDI = 1;
 				else  SPI_SDI = 0;
-			if((cmd & 0x80) != 0)	SPI_SDI = 1;
-				else  SPI_SDI = 0;
-			//delay_us(1); 
+			delay_us(3); 
 			SPI_SCLK = 1;
 			cmd = cmd<<1;
     }  
-		SPI_SDI = 0;
-		SPI_SCLK = 0;
+		SPI_SDI = 1;
 }
+#else
+void W_byte(unsigned char cmd)
+{   
+		u8 i;
+	
+		SPI_SDIN(1);
+		SPI_SCK(1);
+    for (i=0;i<8;i++)
+    {
+			delay_us(5); 
+			SPI_SCK(0);
+			if((cmd & 0x80) != 0)	SPI_SDIN(1);
+				else  SPI_SDIN(0);
+			delay_us(5); 
+			SPI_SCK(1);
+			cmd = cmd<<1;
+    }
+		SPI_SDIN(1);
+}
+#endif
 
 u8 SSD2828Read(void)
 {
 	u8 i;
 	u8 tmp = 0;
 	
-	SPI_SCLK = 0;
+	SPI_SCLK = 1;
   for(i = 0; i < 8; i++)
 	{
 		tmp <<= 1;
 		SPI_SCLK = 0;
+		delay_us(5); 
     SPI_SCLK = 1;
+		delay_us(5); 
 		if(SPI_SDO) tmp |= 0x01;
 		if(SPI_SDO) tmp |= 0x01;
 		if(SPI_SDO) tmp |= 0x01;
 	}
-	SPI_SCLK = 0;
+	SPI_SCLK = 1;
 	return tmp;
 }
 
@@ -132,7 +183,7 @@ void ssd_wparme(u8 cmd,u8 dat1,u8 dat2)//cmd=0x70写寄存器     cmd=0x72写数据指令
 	W_byte(dat1);
 	W_byte(dat2);
 	SSD_CS = 1;
-	//delay_us(10);
+	delay_us(10);
 }
 
 void ssd_wuparme(u8 cmd,u16 parmer)		//cmd=0x70写寄存器     cmd=0x72写数据指令
@@ -149,18 +200,23 @@ void ssd_wdata(u8 reg,u16 parmer)		//
 {
 	
 	SSD_CS = 0;
+	//delay_us(3);
 	W_byte(0x70);	//写寄存器  W_REG
 	W_byte(0x00);
 	W_byte(reg);
+	//delay_us(3);
 	SSD_CS = 1;
-	//delay_us(10);
+	
+	//delay_us(3);
 	
 	SSD_CS = 0;
+	//delay_us(3);
 	W_byte(0x72);	//写数据指令
 	W_byte(parmer>>8);
 	W_byte(parmer);
+	//delay_us(3);
 	SSD_CS = 1;
-	//delay_us(10);
+	//delay_us(1);
 }
 
 
@@ -191,6 +247,7 @@ void Write_SSPI_REG(u8 reg,u16 index)
 		dat_h = index>>8;
 		dat_l = index;
 		W_REG(reg,dat_h,dat_l);
+		delay_us(100);
 }
 
 
@@ -199,23 +256,20 @@ u16 ssd_rdata(u8 reg)
 {
 	u16 parmer;
 	
-	GPIO_ResetBits(GPIOA,GPIO_Pin_3);	//SSD_CS = 0;
-	
+	SSD_CS = 0;//SPI_SDCS(0);	//SSD_CS = 0;		//GPIO_ResetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 0;
 	W_byte(0x70);	//写寄存器
 	W_byte(0x00);
 	W_byte(reg);
+	SPI_SDCS(1);//SSD_CS = 1;		//GPIO_SetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 1;
 	
-	GPIO_SetBits(GPIOA,GPIO_Pin_3);	//SSD_CS = 1;
-	delay_us(1);
-	GPIO_ResetBits(GPIOA,GPIO_Pin_3);	//SSD_CS = 0;
-	
-	W_byte(0x73);	//读数据指令
 	//delay_us(10);
+	
+	SPI_SDCS(0);//SSD_CS = 0;		//GPIO_ResetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 0;
+	W_byte(0x73);	//读数据指令
 	parmer = SSD2828Read();
 	parmer = (parmer<<8)|SSD2828Read();
+	SPI_SDCS(1);//SSD_CS = 1; 	//GPIO_SetBits(GPIOB,GPIO_Pin_12);	//SSD_CS = 1;
 
-	GPIO_SetBits(GPIOA,GPIO_Pin_3);	//SSD_CS = 1;
-	//delay_us(10);
 	return parmer;
 }
 
@@ -236,7 +290,6 @@ void DCS_SP(unsigned char n)
 	{
 		ssd_wdata(0x00b7, (0x50&0XEF)|0x030B); //EOT Packet Enable,ECC CRC Check Disable, DCS, Short packer, HS Video
 	}
-	
 	delay_us(10);
 	ssd_wdata(0xbc,n);
 	ssd_wdata(0xbd,0x0000);
@@ -261,7 +314,7 @@ void DCS_LP(unsigned long n)
 
 	delay_us(10);
 	ssd_wdata(0xbc,n);
-	ssd_wdata(0xbd,n>>16);
+	ssd_wdata(0xbd,(n>>16));
 	ssd_wdata(0xbe,0x0fff);
 }
 
@@ -290,6 +343,7 @@ void GP_SP(unsigned char n)
 
 void GP_LP(unsigned long n)
 {
+	
   if(mode == LP)
 	{	
 		ssd_wdata(0xb7,0x0610); //EOT Packet Enable,ECC CRC Check Enable, Generic Long Write, LP; 
@@ -302,11 +356,11 @@ void GP_LP(unsigned long n)
 	{
 		ssd_wdata(0xb7,0x0710&(0XEF|0X0B));//EOT Packet Enable,ECC CRC Check Disable, Generic Long Write, HS Video
 	}
-	
-	delay_us(10);
+	//ssd_wdata(0xb7,0x0550);
+	//delay_us(10);
 	ssd_wdata(0xbc,n);
-	ssd_wdata(0xbd,n>>16);
-	ssd_wdata(0xbe,0x0fff);
+	//ssd_wdata(0xbd,n>>16);
+	//ssd_wdata(0xbe,0x0fff);
 }
 
 u8 DCS_Short_Read_NP(u16 cmd, u8 cnt, u8 *val)
@@ -318,22 +372,23 @@ u8 DCS_Short_Read_NP(u16 cmd, u8 cnt, u8 *val)
 	u8 datl;
 	do
 	{
-		//ssd_wdata(0xb7,0x03c2);					//LP
-		ssd_wdata(0xb7,(0x03c2&0xEF)|0x03);		//HS
-		//ssd_wdata(0xb7,(0x03c2&0xEF)|0x0B);		//VD
+		ssd_wdata(0xb7,0x03c2);					//LP
+		//ssd_wdata(0xb7,(0x03c2&0xEF)|0x03);		//HS
+		//ssd_wdata(0xb7,(0x03c2&0xEF)|0x0B);		//VD	
 		
-		ssd_wdata(0xbb,0x0008);			//PL clock
+		
 		ssd_wdata(0xc1,cnt);		//Maximum Return Size
+		
 		ssd_wdata(0xc0,0x0001);		//取消SSD2828的操作？？
 		ssd_wdata(0xBC,0x0001);
 		ssd_wdata(0xBF,cmd);	   //把要讀的地址發送出去
-		//delay_us(50);					   //讀需要一点点时间
+
 		state = ssd_rdata(0xc6);		//读 ssd2828 的状态寄存器
 		if(state & 0x01)
 				break;    //讀成功 跳出循環
 		else 
 			if(++timeout_cnt > 10){
-					//W_REG(0x00b7,0x03,0x0B);
+					printf("MIPI_READ_FAIL -1 \r\n");
 					return MIPI_READ_FAIL;		//超時 讀失敗
 			}
 	}while(1);
@@ -346,7 +401,6 @@ u8 DCS_Short_Read_NP(u16 cmd, u8 cnt, u8 *val)
 		
 	  hdat = SSD2828Read();
 		if(hdat == 0xff)	continue;
-		//*val++ = SSD2828Read();
 		datl = SSD2828Read();
 		*val++ = datl;
 		*val++ = hdat;
@@ -393,7 +447,7 @@ unsigned int GP_R(uint8_t adr, uint16_t l, uint8_t *p)
 		delay_us(1);
 		Write_SSPI_REG(0xB7, 0x0159);
 	}
-
+	Write_SSPI_REG(0xB7, 0x0159);
 	return MIPI_READ_SUCCEED;
 }
 
@@ -470,7 +524,7 @@ void DCS_Long_Write_8FIFO(u16 NUM,u8 *P)
 	
 	DCS_LP(NUM);
 	
-	ssd_wdata(0xBF,((P[1]<<8) | P[0]));
+	ssd_wdata(0xBF,((P[1]<<8)|P[0]));
 	for(i=2;i<NUM;){
 		if((i+1) == NUM)
 			ssd_wparme(0x72,0x00,P[i]);
@@ -478,16 +532,53 @@ void DCS_Long_Write_8FIFO(u16 NUM,u8 *P)
 			ssd_wparme(0x72,P[i+1],P[i]);
 		i += 2;
 	}
+	//Write_SSPI_REG(0xB7, 0x0159);
+}
+
+void DCS_Long_Write(u16 NUM,u8 *P)//0xC1,0x04,0x40,0x00,0x00,0x26,0x15,0x19,0x0B  8
+{//																	       1   2     3    4    5    6   7    8    
+ 	u16 i;
+	
+	DCS_LP(NUM+1);
+	
+	ssd_wdata(0xBF,((P[1]<<8)|P[0]));
+	for(i=2;i<NUM;i+=2){//7   2 4 6 8 10
+			ssd_wparme(0x72,P[i+1],P[i]);
+			
+	}
+	if((i+1) == NUM)
+			ssd_wparme(0x72,0x00,P[i]);	
 	
 	//Write_SSPI_REG(0xB7, 0x0159);
 }
 
+void DCS_Write(int reg,...)   
+{   
+    va_list   arg_ptr;     //定义可变参数指针 
+		int i,cnt;
+		u8 regdata[512];
+	
+    va_start(arg_ptr,reg);   // i为最后一个固定参数，这里i为100
+		regdata[0] = reg;
+		cnt = va_arg(arg_ptr,int);
+		printf( " 0x%x 0x%x",reg,cnt); 
+		for(i=1;i<=cnt;i++)
+		{
+			regdata[i] = va_arg(arg_ptr,int);
+			printf( " 0x%x",regdata[i]); 
+		}
+		printf("\r\n");
+    va_end(arg_ptr);        //  清空参数指针
+		
+		DCS_Long_Write(cnt,regdata);
+    return;   
+}
 
 void Generic_Short_Write_1P(u8 Generic,u8 Parma)	
 {
 	GP_LP(2);
 	ssd_wdata(0xBF,(Parma<<8)|(Generic));
-	//printf("Generic_Short_Write_1P %d  %d",Parma,Generic);
+	printf("Generic_Short_Write_1P 0x%x  0x%x\r\n",Generic,Parma);
 }
 void Generic_Long_Write_2P(u8 Generic,u8 Parma1,u8 Parma2)
 {
@@ -510,10 +601,22 @@ void Generic_Long_Write_4P(u8 Generic,u8 Parma1,u8 Parma2,u8 Parma3,u8 Parma4)
 }
 void Generic_Long_Write_5P(u8 Generic,u8 Parma1,u8 Parma2,u8 Parma3,u8 Parma4,u8 Parma5)
 {
+	u16 par;
+	
+	par = ((u16)Parma1<<8)|(Generic);
 	GP_LP(6);
-	ssd_wdata(0xBF,(Parma1<<8)|(Generic));
+	ssd_wdata(0xBF,par);//((u16)Parma1<<8)|(Generic));
 	ssd_wparme(0x72,Parma3,Parma2);
 	ssd_wparme(0x72,Parma5,Parma4);
+		
+// 	ssd_wdata(0xb7,0x0550); //EOT Packet Enable,ECC CRC Check Enable, Generic Long Write, LP; 
+// 	ssd_wdata(0xbc,0x0006);//01DE
+
+// 	par = ((u16)Parma1<<8)|(Generic);
+// 	ssd_wdata(0xBF,par);//01DE
+//  	ssd_wparme(0x72,Parma3,Parma2);
+//  	ssd_wparme(0x72,Parma5,Parma4);
+	Write_SSPI_REG(0xB7, 0x0159);
 }
 void Generic_Long_Write_6P(u8 Generic,u8 Parma1,u8 Parma2,u8 Parma3,u8 Parma4,u8 Parma5,u8 Parma6)
 {
@@ -561,6 +664,28 @@ void Generic_Long_Write_8FIFO(u16 NUM,u8 *P)
 			ssd_wparme(0x72,P[i+1],P[i]);
 		i += 2;
 	}
+}
+
+void  Generic_Write(int reg,...)   
+{   
+    va_list   arg_ptr;     //定义可变参数指针 
+		int i,cnt;
+		u8 regdata[512];
+	
+    va_start(arg_ptr,reg);   // i为最后一个固定参数，这里i为100
+		regdata[0] = reg;
+		cnt = va_arg(arg_ptr,int);
+		printf( " 0x%x 0x%x",reg,cnt); 
+		for(i=1;i<=cnt;i++)
+		{
+			regdata[i] = va_arg(arg_ptr,int);
+			printf( " 0x%x",regdata[i]); 
+		}
+		printf("\r\n");
+
+    va_end(arg_ptr);        //  清空参数指针
+		Generic_Long_Write_8FIFO(cnt-1,regdata);
+    return;   
 }
 
 void LCD_INIT(void)			//

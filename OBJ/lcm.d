@@ -3,7 +3,7 @@
 ..\OBJ\lcm.o: ..\SYSTEM\sys\sys.h
 ..\OBJ\lcm.o: ..\USER\stm32f10x.h
 ..\OBJ\lcm.o: ..\CORE\core_cm3.h
-..\OBJ\lcm.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+..\OBJ\lcm.o: D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdint.h
 ..\OBJ\lcm.o: ..\CMSIS\Include\core_cmInstr.h
 ..\OBJ\lcm.o: ..\CMSIS\Include\core_cmFunc.h
 ..\OBJ\lcm.o: ..\USER\system_stm32f10x.h
@@ -18,5 +18,5 @@
 ..\OBJ\lcm.o: ..\HARDWARE\SSD\lcd_drv.h
 ..\OBJ\lcm.o: ..\SYSTEM\delay\delay.h
 ..\OBJ\lcm.o: ..\SYSTEM\usart\usart.h
-..\OBJ\lcm.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\lcm.o: D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\lcm.o: ..\HARDWARE\SSD\lcmburn.h

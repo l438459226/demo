@@ -36,7 +36,7 @@ u32 *interface[]={
 	(void*)mem_free,
 	(void*)mem_perused,
 
-	(void*)IIC_Start,
+	(void*)IIC_Start,	//8
 	(void*)IIC_Stop,
 	(void*)IIC_Send_Byte,
 	(void*)IIC_Read_Byte,

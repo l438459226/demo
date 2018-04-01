@@ -1,3 +1,7 @@
+#ifndef __FRECKER_H
+#define __FRECKER_H
+
+
 #include "stm32f10x.h"
 #include "malloc.h"
 #include "arm_math.h"
@@ -30,7 +34,7 @@ void	FlickerMeter(void);
 
 
 
-
+#endif
 
 
 

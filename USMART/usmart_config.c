@@ -8,7 +8,6 @@
 #include "lcd.h"
 #include "ssd2828.h"
 												 
-extern void test(u8 ii);
 extern void test_fun(void(*ledset)(u8),u8 sta); 
 
 extern void check_db(void);
@@ -33,7 +32,6 @@ struct _m_usmart_nametab usmart_nametab[]=
 	(void*)write_addr,"void write_addr(u32 addr,u32 val)",	 
 #endif		
 
-	(void*)test,"u16 test(u8 ii)",
 	(void*)Ymode,"void Ymode(void)",
 /*
 

@@ -1,57 +1,36 @@
 #include "led.h"
 #include "sys.h"
-#include "stdio.h"
 #include "appInterface.h"
 
-//ÉÏ²ãÓ¦ÓÃ  µ÷ÓÃµ×²ã½Ó¿ÚÍê³ÉÉÏ²ãÓ¦ÓÃ¹¦ÄÜ	£¨Ô¤ÁôÖ¸¶¨½Ó¿Ú¸øµ×²ã»Øµ÷£©
+//æ¶“å©‚çœ°æ´æ—‚æ•¤  ç’‹å†ªæ•¤æ´æ›çœ°éºãƒ¥å½›ç€¹å±¾åšæ¶“å©‚çœ°æ´æ—‚æ•¤é”ç†»å…˜	é”›å ¥î•©é£æ¬å¯šç€¹æ°­å¸´é™ï½‡ç²°æ´æ›çœ°é¥ç‚¶çšŸé”›?
 
 
 void led_flash(void)
 {
 	u8 i=5;
-	LED_Init();		  	//³õÊ¼»¯ÓëLEDÁ¬½ÓµÄÓ²¼ş½Ó¿Ú
+	u8 per;
+	u32 *bufer;
+	
 	load_interface();
+	Set_Voutp(4.78);
+	Set_Voutn(-5.87);
 
+	per = mem_perused(0);
+	printff("using diceng function mem perused:%d  0x%x\r\n",per,bufer);
 	while(i--)
 	{
 		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
-		Delay_ms(1000);
+		delay_ms(1000);
 		GPIO_SetBits(GPIOB,GPIO_Pin_3);
-
-		Delay_ms(1000);
+		delay_ms(1000);
 	}
 }
 
 int main(void)
 {
-	u8 i=5; 
-	LED_Init();		  	//³õÊ¼»¯ÓëLEDÁ¬½ÓµÄÓ²¼ş½Ó¿Ú
-	
-	while(i--)
+	//while(1);
+	while(1)
 	{
-		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
-		
-		Delay_ms(500);
-		GPIO_SetBits(GPIOB,GPIO_Pin_3);
-
-		Delay_ms(500);
-	}
-	return 0;
-}
-
-
-void APPmain(void)
-{	
-	u8 i=3;  
-	LED_Init();		  	//³õÊ¼»¯ÓëLEDÁ¬½ÓµÄÓ²¼ş½Ó¿Ú
-	while(i--)
-	{
-		GPIO_ResetBits(GPIOB,GPIO_Pin_3);
-
-		delay_ms(200);
-		GPIO_SetBits(GPIOB,GPIO_Pin_3);
-
-		delay_ms(500);
+		printff("error appmain\r\n");
 	}
 }
-

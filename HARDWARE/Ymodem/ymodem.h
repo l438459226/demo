@@ -37,7 +37,7 @@
 #define ABORT1                  (0x41)  //'A' == 0x41, 用户终止 
 #define ABORT2                  (0x61)  //'a' == 0x61, 用户终止
 
-#define NAK_TIMEOUT             (0x100000)
+#define NAK_TIMEOUT             (0x10000)
 #define MAX_ERRORS              (5)
 
 /* 函数声明 ------------------------------------------------------------------*/

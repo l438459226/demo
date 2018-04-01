@@ -1,0 +1,2 @@
+..\OBJ\crc16.o: ..\HARDWARE\CRC16\CRC16.c
+..\OBJ\crc16.o: ..\HARDWARE\CRC16\CRC16.h

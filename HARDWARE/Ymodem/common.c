@@ -429,7 +429,7 @@ void FLASH_DisableWriteProtectionPages(void)
 *******************************************************************************/
 void Main_Menu(void)
 {
-    uint8_t key = 0;
+    uint8_t key = 0,ret;
 		u32 * p = (u32*)0x2000C000;
     BlockNbr = (FlashDestination - 0x08000000) >> 12;
 
@@ -456,14 +456,16 @@ void Main_Menu(void)
         FlashProtection = 0;
     }
 		
-		while(ReadUart(USART_PORT_COM2,&key,1));	//清除残余数据
-
+		while(ReadUart(USART_PORT_COM2,&ret,1));	//清除残余数据
+		USART_ITConfig(USART2, USART_IT_IDLE, DISABLE);//关闭中断
     while (1)
     {
         SerialPutString("\r\n================== Main Menu ============================\r\n\n");
         SerialPutString("  Download Image To the STM32F10x Internal Flash ------- 1\r\n\n");
         SerialPutString("  Upload Image From the STM32F10x Internal Flash ------- 2\r\n\n");
         SerialPutString("  Execute The New Program ------------------------------ 3\r\n\n");
+				SerialPutString("  UNLOCK FlashProtection ------------------------------ 4\r\n\n");
+				SerialPutString("  Exit !  ------------------------------ 5\r\n\n");
 
         if (FlashProtection != 0)
         {
@@ -477,11 +479,11 @@ void Main_Menu(void)
         if (key == 0x31)
         {
             //下载程序
-						while(ReadUart(USART_PORT_COM2,&key,1));	//清除残余数据
+						while(ReadUart(USART_PORT_COM2,&ret,1));	//清除残余数据
             SerialDownload();
-					
+						while(ReadUart(USART_PORT_COM2,&ret,1));
 						printf("app addr:0x%x\r\n",*p);
-						//return;
+						
         }
         else if (key == 0x32)
         {
@@ -508,6 +510,12 @@ void Main_Menu(void)
             //解除写保护
             FLASH_DisableWriteProtectionPages();
         }
+				else if (key == 0x35)
+        {
+						while(Read_Uart(USART_PORT_COM2,&ret,1));	//清除残余数据
+            USART_ITConfig(USART2, USART_IT_IDLE, ENABLE);//开启中断
+            return ;
+        }
         else
         {
             if (FlashProtection == 0)
@@ -520,6 +528,7 @@ void Main_Menu(void)
             }
         }
     }
+		//USART_ITConfig(USART2, USART_IT_IDLE, ENABLE);//开启中断
 }
 
 uint32_t IAP_Ram_Code(__IO uint32_t* RamAddress, uint32_t* Data ,uint32_t DataLength)

@@ -17,8 +17,8 @@ INTERFACE_FUN(mem_malloc);
 INTERFACE_FUN(mem_free);
 INTERFACE_FUN(mem_perused);
 INTERFACE_FUN(myfree);
-INTERFACE_FUN(mymalloc);
-INTERFACE_FUN(myrealloc);
+//INTERFACE_FUN(mymalloc);
+//INTERFACE_FUN(myrealloc);
 INTERFACE_FUN(IIC_Init);
 INTERFACE_FUN(IIC_Start);
 INTERFACE_FUN(IIC_Stop);
@@ -35,8 +35,15 @@ INTERFACE_FUN(LM36923_Init);
 #define POINT_INTERFACE(fun,port)	\
 fun = (inface_##fun)(((u32*)(*addr_interface))[port])\
 
+
+
+
+
 void load_interface(void)
 {
+	u16 *lcm_para;
+	u32 i;
+	
 	addr_interface = (u32*)INTERFACE_ADDR;	//接口函数入口指针
 	
 	printf("\r\nInterface_addr=0x%x   0x%x \r\n",(u32)addr_interface,(u32)(*addr_interface));
@@ -63,7 +70,20 @@ void load_interface(void)
 	POINT_INTERFACE(Voutp_Upfirst,17);
 	POINT_INTERFACE(LM36923_Init,18);
 	
-	Set_Voutp(4.45);
+	IAP_W25QXX_Init("\r\n############Interface OK$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
+
+	lcm_para = (u16*)(((u32*)(*addr_interface))[19]);	//lcm_para
+	IAP_W25QXX_Init("\r\nlcm_para:0x%x\r\n",((u32*)(*addr_interface))[19]);
+	
+	lcm_para[0] = 3;
+	lcm_para[1] = 720;
+	lcm_para[2] = 1280;
+
+	
+	for(i=0;i<12;i++)
+	{
+			IAP_W25QXX_Init(" %d",lcm_para[i]);
+	}
 	IAP_W25QXX_Init("\r\n############Interface OK$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\r\n");
 }
 

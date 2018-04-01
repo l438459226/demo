@@ -135,13 +135,15 @@ int IIC_Wait_Ack(void)
 		ucErrTime++;
 		if(ucErrTime>250)
 		{	 
+#ifdef BUGACK
 			printf("IIC NO back ACK\r\n ");
+#endif
 			IIC_Stop();
 			return -1;
 		}
 	}
+	IIC_SCL=0;//时钟输出0 
 	SDA_OUT();	//BUG
-	IIC_SCL=0;//时钟输出0 	   
 	return 0;  
 } 
 //不产生ACK应答
@@ -398,7 +400,7 @@ int i2c1_read_data(u8 *data, u32 nr_of_bytes, u8 nak_last_byte)
 * 输出           : 无
 * 返回           : 无
 *******************************************************************************/
-void i2c1_Detect(void)
+void i2c1_Detect(void)	//I2C_Detect
 {
 	int retval;
 	u8 i = 0;
@@ -412,7 +414,7 @@ void i2c1_Detect(void)
 			TESTER_MAIN_DEBUG("i2c address = 0x%x detected.\r\n",i);
 		}
 		i2c1_stop();
-		//Delay_ms(10);
+		Delay_us(500);
 	}
 }
 
