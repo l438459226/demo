@@ -1,5 +1,6 @@
 Dependencies for Project 'LED', Target 'Target 1': (DO NOT MODIFY !)
 <<<<<<< HEAD
+<<<<<<< HEAD
 F (.\main.c)(0x5A2FE8C0)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\sys -I..\SYSTEM\usart -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\Appinterface-I E:\Keil\ARM\RV31\INC-I E:\Keil\ARM\CMSIS\Include-I E:\Keil\ARM\Inc\ST\STM32F10x-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (C:\Users\github\demo\demo\实验1跑马灯-库函数操作\HARDWARE\LED\led.h)(0x5A2E8667)
 I (C:\Users\github\demo\demo\实验1跑马灯-库函数操作\SYSTEM\sys\sys.h)(0x5A2E8667)
@@ -128,6 +129,8 @@ I (C:\Users\github\demo\demo\实验1跑马灯-库函数操作\STM32F10x_FWLib\inc\stm32f10
 I (C:\Users\github\demo\demo\实验1跑马灯-库函数操作\STM32F10x_FWLib\inc\misc.h)(0x5A2E8667)
 I (E:\Keil\ARM\ARMCC\include\stdio.h)(0x51C7B744)
 =======
+=======
+>>>>>>> origin/master
 F (.\main.c)(0x5AAB1945)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\HARDWARE\LED -I..\SYSTEM\sys -I..\USER -I..\STM32F10x_FWLib\inc -I..\CORE -I..\HARDWARE\Appinterface -I D:\ARM\Keil\ARM\RV31\INC -I D:\ARM\Keil\ARM\CMSIS\Include -I D:\ARM\Keil\ARM\Inc\ST\STM32F10x -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o "..\OBJ\main.o" --omf_browse "..\OBJ\main.crf" --depend "..\OBJ\main.d")
 I (..\HARDWARE\LED\led.h)(0x5AAB1AE8)
 I (..\SYSTEM\sys\sys.h)(0x5055B57C)
@@ -221,4 +224,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_rcc.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
 I (D:\ARM\Keil\ARM\ARMCC\bin\..\include\stdio.h)(0x50F96150)
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
